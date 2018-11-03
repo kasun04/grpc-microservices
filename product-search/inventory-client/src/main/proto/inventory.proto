@@ -1,0 +1,20 @@
+syntax = "proto3";
+package mfe.ch03.grpc;
+import "google/protobuf/wrappers.proto";
+
+service InventoryService {
+    rpc getItemByName(google.protobuf.StringValue) returns (Items); 
+    rpc getItemByID(google.protobuf.StringValue) returns (Item); 
+    rpc addItem(Item) returns (google.protobuf.BoolValue); 
+}
+
+message Items {
+    string itemDesc = 1; 
+    repeated Item items = 2; 
+}
+message Item {
+	string id = 1;
+	string name = 2;
+	string description = 3;
+} 
+
